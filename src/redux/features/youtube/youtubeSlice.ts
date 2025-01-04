@@ -1,9 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
-import axios from "axios";
-const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
-import { HomeVideoCard, IHomeChannelData } from "../../../utils/types";
 import instance from "../../../api/api";
+import { HomeVideoCard, IHomeChannelData } from "../../../utils/types";
+import { RootState } from "../../store";
+const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
 export interface HomeVideoState {
   loading: boolean;
   data: Array<HomeVideoCard>;
