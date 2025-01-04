@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 import axios from "axios";
+import instance from "../../../api/api";
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
 interface User {
   id: string,
@@ -30,7 +31,7 @@ const initialState = {
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   () => {
-    const res = axios.get(`https://www.googleapis.com/youtube/v3/videoCategories?key=${API_KEY}&part=snippet&regionCode=us`)
+    const res = instance.get(`/v3/videoCategories?key=${API_KEY}&part=snippet&regionCode=us`)
     
     return res;
   }
@@ -55,7 +56,6 @@ const categorySlice = createSlice({
   reducers: {
     changeFilterTag: (state,action:PayloadAction<string>) => {
       state.filterTag = action.payload
-      console.log(state.filterTag);
       
     },
   }

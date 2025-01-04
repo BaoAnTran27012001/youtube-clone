@@ -3,6 +3,7 @@ import { RootState } from "../../store";
 import axios from "axios";
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
 import { HomeVideoCard, IHomeChannelData } from "../../../utils/types";
+import instance from "../../../api/api";
 export interface HomeVideoState {
   loading: boolean;
   data: Array<HomeVideoCard>;
@@ -23,7 +24,7 @@ export const fetchYoutubePopular = createAsyncThunk(
   "youtube/fetchYoutubePopular",
   (paramterObject:{categoryId:string|null,pageToken:string|null|undefined}) => {
    
-    const res = axios.get(`https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&part=snippet,contentDetails,statistics&chart=mostPopular&${paramterObject.categoryId !== null ? `videoCategoryId=${paramterObject.categoryId}`:``}&${paramterObject.pageToken ? `pageToken=${paramterObject.pageToken}`:``}&maxResults=10`)
+    const res = instance.get(`/v3/videos?key=${API_KEY}&part=snippet,contentDetails,statistics&chart=mostPopular&${paramterObject.categoryId !== null ? `videoCategoryId=${paramterObject.categoryId}`:``}&${paramterObject.pageToken ? `pageToken=${paramterObject.pageToken}`:``}&maxResults=10`)
     
     return res;
   }
@@ -31,8 +32,8 @@ export const fetchYoutubePopular = createAsyncThunk(
 
 export const fetchYoutubeChannels = createAsyncThunk(
   "youtube/fetchYoutubeChannels",
-  (channelIds:string) => {
-    const res = axios.get(`https://www.googleapis.com/youtube/v3/channels?key=${API_KEY}&part=snippet,statistics&id=${channelIds}`)
+  (channelIds:string|undefined) => {
+    const res = instance.get(`/v3/channels?key=${API_KEY}&part=snippet,contentDetails,statistics&id=${channelIds}`)
     
     return res;
   }
@@ -45,7 +46,6 @@ const youtubeSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(fetchYoutubePopular.fulfilled, (state, action: PayloadAction<Array<HomeVideoCard>>) => {
-     console.log(action.payload?.data?.items);
       state.loading = false;
       state.data = state.isSwitchCategory ? action.payload?.data?.items : [...state.data,...action.payload?.data?.items];
       state.pageToken = action.payload?.data?.nextPageToken;
@@ -74,8 +74,6 @@ const youtubeSlice = createSlice({
   reducers: {
     toggleSwitchCategory: (state,action:PayloadAction<boolean>) => {
       state.isSwitchCategory = action.payload
-      console.log(state.isSwitchCategory);
-      
     },
   }
 })

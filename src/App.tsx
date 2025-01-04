@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Watch from "./pages/Watch";
 import ScrollToTop from "./components/ScrollToTop";
+import Channel from "./pages/Channel";
+import Playlist from "./pages/Playlist";
 
 function App() {
   const [filter, setfilter] = useState("home");
@@ -30,6 +32,8 @@ function App() {
           element={<Home categoryId={categoryId} filter={filter} />}
         />
         <Route path="/watch/:videoId" element={<Watch />} />
+        <Route path="/channel/:channelId" element={<Channel />} />
+        <Route path="/playlist/:channelId/:playlistId" element={<Playlist />} />
       </Routes>
     </BrowserRouter>
   );

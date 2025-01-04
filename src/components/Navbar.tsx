@@ -1,9 +1,18 @@
-import { RxHamburgerMenu } from "react-icons/rx";
+import { AiOutlineClose } from "react-icons/ai";
 import { BsYoutube } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
-import { AiOutlineClose } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
+import { useNavigate } from "react-router-dom";
+import {
+  fetchYoutubePopular,
+  homeVideoDataSelector,
+} from "../redux/features/youtube/youtubeSlice";
 const Navbar = () => {
+  const homeVideoSelector = useAppSelector(homeVideoDataSelector);
+  const nextPageToken = homeVideoSelector.pageToken;
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   return (
     <div className="w-full bg-[#0c0c0c]">
       <div className="flex justify-between h-14 w-[95%] mx-auto">
@@ -17,10 +26,21 @@ const Navbar = () => {
             <RxHamburgerMenu className="text-xl" />
           </a>
 
-          <Link to={"/"} className="flex items-center gap-2">
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => {
+              dispatch(
+                fetchYoutubePopular({
+                  categoryId: null,
+                  pageToken: nextPageToken,
+                })
+              );
+              navigate("/");
+            }}
+          >
             <BsYoutube className="text-3xl text-red-600" />
             <span className="text-xl">Youtube</span>
-          </Link>
+          </div>
         </div>
         <div className="flex items-center">
           <form action="">

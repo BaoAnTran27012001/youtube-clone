@@ -32,11 +32,13 @@ const Card = (props) => {
       </div>
       <div className="flex gap-2 mt-2">
         <div className="aspect-[1/1] h-12 w-12 rounded-full">
-          <img
-            src={channelThumbnail}
-            alt="channelImage"
-            className="w-full h-full object-cover rounded-full"
-          />
+          <Link to={`/channel/${channelID}`}>
+            <img
+              src={channelThumbnail}
+              alt="channelImage"
+              className="w-full h-full object-cover rounded-full"
+            />
+          </Link>
         </div>
         <div className="flex flex-col gap-1">
           <h3 className="text-lg">{title.substring(0, 65) + " ... "}</h3>

@@ -15,6 +15,7 @@ import {
 } from "../redux/features/youtube/youtubeSlice";
 import { IHomeChannelData, IVideoDetail, IWatchPageData } from "../utils/types";
 import Comment from "../components/Comment";
+import Spinner from "../components/Spinner";
 
 const Watch = () => {
   const { videoId } = useParams();
@@ -40,7 +41,6 @@ const Watch = () => {
   const viewCount = watchPageData?.statistics?.viewCount;
   const duration = watchPageData?.statistics?.contentDetails?.duration;
   const publishedAt = watchPageData?.snippet?.publishedAt;
-
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchWatchPage(videoId));
@@ -87,7 +87,6 @@ const Watch = () => {
     dispatch(fetchWatchPageListVideos(videoIdsString));
   }, [videoIdsString]);
   const watchPageListData = watchPageVideoSelector.minicardlist;
-
   return (
     <div className="w-[95%] mx-auto mt-6">
       <div className="row">
@@ -101,13 +100,13 @@ const Watch = () => {
             <iframe
               className="w-full h-full aspect-[16/9] object-cover rounded-lg overflow-hidden"
               title="Youtube player video"
-              allow="autoplay; picture-inpicture;"
+              do-not-allow="autoplay"
               allowFullScreen
               src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
             ></iframe>
           </div>
           <VideoDetail {...videoDetailData} />
-          <Comment videoId={videoId} />
+          {<Comment videoId={videoId} />}
         </div>
         <div className="col-4 flex flex-col gap-3">
           {watchPageListData?.map((item, index) => {

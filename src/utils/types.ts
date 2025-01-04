@@ -34,12 +34,49 @@ export interface IWatchPageData {
   snippet: {title:string ,description:string,channelTitle:string,channelId:string,publishedAt:string,thumbnails: { standard: { url: string } } };
   statistics: { commentCount: string ,likeCount:string,viewCount:string,contentDetails:{duration:string}};
 }
-export interface ICommentThread{
-  
+export interface ICommentThread{ 
   commentId:string,
   authorChannelId:string,
   authorProfile:string,
   authorName:string,
   commentText:string,
   commentLike:string,
+  commentRepliesCount?:number
+}
+export interface IChannelInfo{
+  id:string,
+  thumbnail:string,
+  title:string,
+  customUrl:string,
+  subCount:string,
+  description:string,
+  videoCount:string
+}
+export interface IMiniCard {
+  id?:string;
+  contentDetails: { duration: string };
+  snippet: {
+    publishedAt: string;
+    title: string;
+    channelTitle: string;
+    thumbnails: { 
+      default: { url: string },
+      standard?:{url:string}
+   };
+  };
+  statistics: { viewCount: string };
+}
+
+export interface IChannelPlaylist{
+  channelId?:string,
+  id:string,
+  title:string,
+  thumbnail:string,
+  videoCount:string,
+}
+export interface IPlaylisInfo{
+  id:string,
+  title:string,
+  description:string,
+  thumbnail:string,
 }

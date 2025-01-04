@@ -3,12 +3,14 @@ import userReducer from "./features/test/userSlice";
 import youtubeReducer from "./features/youtube/youtubeSlice";
 import categoryReducer from "./features/youtube/youtubeCategoriesSlice";
 import youtubeWatchPageReducer from './features/youtube/youtubeWatchPageSlice'
+import playlistReducer from './features/youtube/playlistSlice'
 export const store = configureStore({
   reducer: {
     userReducer,
     youtubeReducer,
     categoryReducer,
-    youtubeWatchPageReducer
+    youtubeWatchPageReducer,
+    playlistReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
