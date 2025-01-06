@@ -80,3 +80,8 @@ export interface IPlaylisInfo{
   description:string,
   thumbnail:string,
 }
+export interface IPlaylistItem{
+  id:string,
+  title:string,
+  thumbnail:string,
+}

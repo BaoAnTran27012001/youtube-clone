@@ -62,7 +62,7 @@ const Home = ({
     dispatch(toggleSwitchCategory(false));
     dispatch(fetchYoutubePopular({ categoryId, pageToken: nextPageToken }));
   };
- 
+
   if (error) {
     return <div className="text-center text-red-700">Error: {error}</div>;
   }
@@ -82,7 +82,10 @@ const Home = ({
       <div className="row w-[95%] mx-auto mt-6">
         {videos?.map((item, index) => {
           return (
-            <div key={`${item.id}-${index}`} className="col-4 mb-4">
+            <div
+              key={`${item.id}-${index}`}
+              className="col-12 col-md-6 col-lg-4 mb-4"
+            >
               <Card {...item} />
             </div>
           );

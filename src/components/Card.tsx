@@ -8,7 +8,9 @@ import {
 
 const Card = (props) => {
   const title = props.snippet?.title;
-  const url = props.snippet?.thumbnails?.standard?.url;
+  const url =
+    props.snippet?.thumbnails?.standard?.url ||
+    props.snippet?.thumbnails?.high?.url;
   const duration = props.contentDetails?.duration;
   const viewCount = props.statistics?.viewCount;
   const videoAge = props.snippet?.publishedAt;
@@ -17,7 +19,7 @@ const Card = (props) => {
   const channelThumbnail = props.channelInfo?.image;
   const channelName = props.snippet?.channelTitle;
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 hover:scale-[101%] duration-200 ease-in-out">
       <div className="relative">
         <Link to={`/watch/${videoID}`} className="h-[220px] rounded-xl">
           <img
@@ -36,7 +38,7 @@ const Card = (props) => {
             <img
               src={channelThumbnail}
               alt="channelImage"
-              className="w-full h-full object-cover rounded-full"
+              className="w-full h-full object-cover rounded-full hover:scale-[108%] duration-200 ease-in-out"
             />
           </Link>
         </div>

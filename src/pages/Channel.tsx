@@ -47,11 +47,11 @@ const Channel = () => {
           </div>
         </div>
       )}
-      <div className="w-[95%] mx-auto mt-8">
+      <div className="w-[90%] mx-auto md:mt-8 mt-6 overflow-hidden">
         <div className="row row-cols-2">
           {/* image */}
           <div className="col-4">
-            <div className="w-52 aspect-[1/1] rounded-full mx-auto">
+            <div className="md:w-52 sm:w-40 w-36 aspect-[1/1] rounded-full mx-auto">
               <img
                 src={channelInfoData?.thumbnail}
                 alt="channel thumbnail"
@@ -61,8 +61,10 @@ const Channel = () => {
           </div>
           {/* details */}
           <div className="col-8 flex flex-col gap-2">
-            <h1 className="text-4xl font-semibold">{channelInfoData?.title}</h1>
-            <div className="flex gap-4 text-lg text-neutral-400 mt-2">
+            <h1 className="md:text-4xl sm:text-3xl text-2xl font-semibold">
+              {channelInfoData?.title}
+            </h1>
+            <div className="sm:flex gap-4 sm:text-lg text-md text-neutral-400 mt-2">
               <h2>{channelInfoData?.customUrl}</h2>
               <h2>{formatNumber(channelInfoData?.subCount)} subscribers</h2>
               <h2>{channelInfoData?.videoCount} videos</h2>

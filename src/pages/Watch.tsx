@@ -90,8 +90,8 @@ const Watch = () => {
   return (
     <div className="w-[95%] mx-auto mt-6">
       <div className="row">
-        <div className="col-8">
-          <div className="w-full aspect-[16/9]">
+        <div className="col-xl-8 col-lg-7">
+          <div className="w-full aspect-[16/9] ">
             {/* <img
               src={videoDetailData.videoThumbnails}
               alt="videoThumbnails"
@@ -106,12 +106,17 @@ const Watch = () => {
             ></iframe>
           </div>
           <VideoDetail {...videoDetailData} />
-          {<Comment videoId={videoId} />}
+          <div className="lg:block hidden">
+            <Comment videoId={videoId} />
+          </div>
         </div>
-        <div className="col-4 flex flex-col gap-3">
+        <div className="col-xl-4 col-lg-5 flex flex-col gap-3 lg:mt-0 mt-3">
           {watchPageListData?.map((item, index) => {
             return <MiniCard key={index} {...item} />;
           })}
+        </div>
+        <div className="block lg:hidden">
+          <Comment videoId={videoId} />
         </div>
       </div>
     </div>

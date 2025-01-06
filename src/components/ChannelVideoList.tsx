@@ -37,7 +37,7 @@ const ChannelVideoList = (props: { channelId: string | undefined }) => {
   const channelVideosList = watchPageVideoSelector.minicardlist;
   return (
     <>
-      <div className="row row-cols-4 py-3">
+      <div className="row row-cols-lg-4 row-cols-md-3">
         {channelVideosList?.map((video, index) => {
           return <ChannelVideoCard key={`${video.id}--${index}`} {...video} />;
         })}

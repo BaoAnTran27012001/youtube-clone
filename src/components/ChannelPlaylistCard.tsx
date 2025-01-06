@@ -4,18 +4,16 @@ import { formatNumber } from "../utils/functions";
 import { Link } from "react-router-dom";
 
 const ChannelPlaylistCard = (props: IChannelPlaylist) => {
-  console.log("check props ", props);
-
   return (
     <Link to={`/playlist/${props?.channelId}/${props?.id}`}>
-      <div className="col flex flex-col gap-2 mb-2">
+      <div className="col flex flex-col gap-2 mb-2 hover:scale-[101%] duration-200 ease-in-out">
         <div className="relative">
           <div className="absolute bg-[#0c0c0cd0] py-0.5 px-2 rounded right-6 bottom-2 flex items-center gap-2">
             {/* {convertVideoDuration(props.contentDetails.duration)} */}
             <FaList />
             <h3>{formatNumber(props?.videoCount)} videos</h3>
           </div>
-          <div className=" aspect-[16/9] w-[300px] rounded">
+          <div className=" w-full rounded">
             <img
               src={props?.thumbnail}
               alt="minicard image"

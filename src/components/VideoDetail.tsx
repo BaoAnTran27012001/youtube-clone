@@ -3,6 +3,7 @@ import { BiLike } from "react-icons/bi";
 import { FaShare } from "react-icons/fa";
 import { formatNumber, formatVideoDate } from "../utils/functions";
 import { IVideoDetail } from "../utils/types";
+import { Link } from "react-router-dom";
 
 const VideoDetail = (props: IVideoDetail) => {
   const [isShowDescription, setIsShowDescription] = useState(false);
@@ -17,13 +18,16 @@ const VideoDetail = (props: IVideoDetail) => {
       <div className="flex justify-between">
         {/* channel info */}
         <div className="flex gap-3">
-          <div className="w-12 aspect-[1/1] rounded-full">
-            <img
-              src={props.channelThumbnail}
-              alt="channel thumbnail"
-              className="w-full h-full rounded-full"
-            />
-          </div>
+          <Link to={`/channel/${props.channelId}`}>
+            <div className="w-12 aspect-[1/1] rounded-full hover:scale-[108%] duration-200 ease-in-out">
+              <img
+                src={props.channelThumbnail}
+                alt="channel thumbnail"
+                className="w-full h-full rounded-full"
+              />
+            </div>
+          </Link>
+
           <div className="flex flex-col">
             <h2 className="font-semibold text-lg">{props.channelTitle}</h2>
             <h2 className="text-sm">

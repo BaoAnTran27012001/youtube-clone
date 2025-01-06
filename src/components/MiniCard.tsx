@@ -9,7 +9,7 @@ import { IMiniCard } from "../utils/types";
 const MiniCard = (props: IMiniCard) => {
   return (
     <Link to={`/watch/${props.id}`}>
-      <div className="flex gap-3 items-center cursor-pointer">
+      <div className="flex gap-3 items-center cursor-pointer hover:scale-[101%]">
         <div className="min-w-40 rounded relative">
           <img
             src={props.snippet.thumbnails.default.url}

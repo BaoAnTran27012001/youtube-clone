@@ -24,9 +24,9 @@ const ChannelPlaylist = (props: { channelId: string | undefined }) => {
       videoCount: playlist.contentDetails.itemCount,
     };
   });
-  console.log("check playlistData ", playlistDataList);
+
   return (
-    <div className="row row-cols-4 py-3">
+    <div className="row row-cols-lg-4 row-cols-md-3 row-cols-1 py-3">
       {playlistDataList?.length > 0 &&
         playlistDataList?.map((item, index) => {
           return (

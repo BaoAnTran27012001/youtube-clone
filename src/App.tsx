@@ -7,6 +7,7 @@ import Watch from "./pages/Watch";
 import ScrollToTop from "./components/ScrollToTop";
 import Channel from "./pages/Channel";
 import Playlist from "./pages/Playlist";
+import Search from "./pages/Search";
 
 function App() {
   const [filter, setfilter] = useState("home");
@@ -34,6 +35,7 @@ function App() {
         <Route path="/watch/:videoId" element={<Watch />} />
         <Route path="/channel/:channelId" element={<Channel />} />
         <Route path="/playlist/:channelId/:playlistId" element={<Playlist />} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </BrowserRouter>
   );
