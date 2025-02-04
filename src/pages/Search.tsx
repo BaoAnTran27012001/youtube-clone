@@ -72,7 +72,10 @@ const Search = () => {
     <div className="row w-[95%] mx-auto mt-6">
       {mergedResult?.map((item, index) => {
         return (
-          <div key={`${item.id}-${index}`} className="col-4 mb-4">
+          <div
+            key={`${item.id}-${index}`}
+            className="col-12 col-md-6 col-lg-4 mb-4"
+          >
             <Card {...item} />
           </div>
         );

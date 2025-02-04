@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Card from "../components/Card";
+import Spinner from "../components/Spinner";
 import {
-  fetchYoutubePopular,
   fetchYoutubeChannels,
+  fetchYoutubePopular,
   homeVideoDataSelector,
   toggleSwitchCategory,
 } from "../redux/features/youtube/youtubeSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
-import Spinner from "../components/Spinner";
-import InfiniteScroll from "react-infinite-scroll-component";
 const Home = ({
   categoryId,
   filter,
